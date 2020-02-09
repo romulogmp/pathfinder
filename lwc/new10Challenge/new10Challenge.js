@@ -6,7 +6,6 @@ import PathfinderPlaceRequest from "@salesforce/apex/PathfinderPlaceRequest.send
 import PathfinderGeocodingRequest from "@salesforce/apex/PathfinderPlaceRequest.sendRequestGeocoding";
 import { refreshApex } from "@salesforce/apex";
 import { updateRecord } from "lightning/uiRecordApi";
-import accountObject from "@salesforce/schema/Account";
 import Id from "@salesforce/schema/Account.Id";
 import accountCity from "@salesforce/schema/Account.BillingCity";
 import accountStreet from "@salesforce/schema/Account.BillingStreet";
@@ -69,13 +68,7 @@ export default class AccountListEdit extends LightningElement {
     updateRecord(recordInput)
       .then(
         resolve => {
-          this.dispatchEvent(
-            new ShowToastEvent({
-              title: "Success",
-              message: "Address found!",
-              variant: "success"
-            })
-          );
+          this.thowSuccessToast();
           refreshApex(this._wiredResultAccountsWithEmptyAddress);
           refreshApex(this._wiredResultLastUpdatedAccounts);
           this.clearValues();
@@ -195,6 +188,16 @@ export default class AccountListEdit extends LightningElement {
         duration: "2000",
         message: "Searching Address...",
         variant: "info"
+      })
+    );
+  }
+
+  thowSuccessToast(){
+    this.dispatchEvent(
+      new ShowToastEvent({
+        title: "Success",
+        message: "Address found!",
+        variant: "success"
       })
     );
   }
