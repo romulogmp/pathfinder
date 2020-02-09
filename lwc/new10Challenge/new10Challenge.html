@@ -1,0 +1,124 @@
+<template>
+  <div>
+    <div>
+      <lightning-card
+        title="Accounts with empty address"
+        icon-name="standard:address"
+      >
+        <div
+          class="slds-p-around_x-small"
+          style="height:300px; white-space:nowrap;overflow-y:scroll;"
+        >
+          <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+              <tr class="slds-line-height_reset">
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Name">Name</div>
+                </th>
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Phone Number">
+                    Phone Number
+                  </div>
+                </th>
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Address">Address</div>
+                </th>
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Find Address">
+                    Find Address
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <template for:each={AccountsWithEmptyAddress} for:item="acc">
+                <tr key={acc.Id} class="slds-hint-parent">
+                  <td data-label="Prospecting" style="width: 30%;">
+                    <div class="slds-truncate" title="Name">{acc.Name}</div>
+                  </td>
+                  <td data-label="Confidence" style="width: 30%;">
+                    <div class="slds-truncate" title="Phone Number">
+                      {acc.Phone}
+                    </div>
+                  </td>
+                  <td data-label="Confidence" style="width: 30%;">
+                    <div class="slds-truncate" title="Address">
+                      <b>Street Address:</b> {acc.BillingStreet} <br />
+                      <b>City:</b> {acc.BillingCity}<br />
+                      <b>Country:</b> {acc.BillingCountry}
+                    </div>
+                  </td>
+                  <td data-label="Confidence" style="width: 10%;">
+                    <div class="slds-truncate" title="Search Address">
+                      <lightning-button
+                        name={acc.Id}
+                        value={acc.Name}
+                        label="Search"
+                        variant="brand"
+                        icon-name="standard:search"
+                        onclick={handleClick}
+                      >
+                      </lightning-button>
+                    </div>
+                  </td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
+      </lightning-card>
+    </div>
+    <div style="margin-top: 5px;">
+      <lightning-card
+        title="Updated Accounts"
+        icon-name="standard:account"
+      >
+        <div
+          class="slds-p-around_x-small"
+          style="height:300px; white-space:nowrap;overflow-y:scroll;"
+        >
+          <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+              <tr class="slds-line-height_reset">
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Name">Name</div>
+                </th>
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Phone Number">
+                    Phone Number
+                  </div>
+                </th>
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Address">Address</div>
+                </th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <template for:each={LastUpdatedAccounts} for:item="acc">
+                <tr key={acc.Id} class="slds-hint-parent">
+                  <td data-label="Prospecting" style="width: 30%;">
+                    <div class="slds-truncate" title="Name">{acc.Name}</div>
+                  </td>
+                  <td data-label="Confidence" style="width: 30%;">
+                    <div class="slds-truncate" title="Phone Number">
+                      {acc.Phone}
+                    </div>
+                  </td>
+                  <td data-label="Confidence" style="width: 30%;">
+                    <div class="slds-truncate" title="Address">
+                      <b>Street Address:</b> {acc.BillingStreet} <br />
+                      <b>City:</b> {acc.BillingCity}<br />
+                      <b>Country:</b> {acc.BillingCountry}
+                    </div>
+                  </td>
+                  <td style="width: 10%;"></td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
+      </lightning-card>
+    </div>
+  </div>
+</template>
