@@ -74,11 +74,9 @@ export default class AccountListEdit extends LightningElement {
           this.clearValues();
         },
         reason => {
-          console.log("Reason-->", reason);
         }
       )
       .catch(error => {
-        console.log("Error:--->  ", error);
       });
   }
 
@@ -94,7 +92,6 @@ export default class AccountListEdit extends LightningElement {
         }
       })
       .catch(error => {
-        window.console.log("error ====> " + JSON.stringify(error));
       });
   }
 
@@ -141,7 +138,6 @@ export default class AccountListEdit extends LightningElement {
         }
       })
       .catch(error => {
-        window.console.log("error ====> " + JSON.stringify(error));
       });
   }
 
@@ -162,11 +158,9 @@ export default class AccountListEdit extends LightningElement {
           this.clearValues();
         },
         reason => {
-          console.log("Reason-->", reason);
         }
       )
       .catch(error => {
-        console.log("Error:--->  ", error);
       });
   }
 
