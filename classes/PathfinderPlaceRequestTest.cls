@@ -1,6 +1,9 @@
 @isTest
 public with sharing class PathfinderPlaceRequestTest {
 
+    static final Object response200 = '({formatted_address=Mr.Treublaan 7, 1097 DP Amsterdam, Países Baixos})';
+    static final String response404;
+
     @TestSetup
     static void makeData(){
 
@@ -43,8 +46,9 @@ public with sharing class PathfinderPlaceRequestTest {
         MockTest mock = new MockTest(200);
         Test.startTest();
         Test.setMock(HttpCalloutMock.class, mock); 
-        PathfinderPlaceRequest.sendRequest(accountName);
-        Test.stopTest();
+        String response = PathfinderPlaceRequest.sendRequest(accountName);
+        System.assertEquals(response200, response);
+        Test.stopTest();     
     }
 
     @isTest
@@ -55,7 +59,8 @@ public with sharing class PathfinderPlaceRequestTest {
         MockTest mock = new MockTest(404);
         Test.startTest();
         Test.setMock(HttpCalloutMock.class, mock); 
-        PathfinderPlaceRequest.sendRequest(accountName);
+        String response = PathfinderPlaceRequest.sendRequest(accountName);
+        System.assertEquals(response404, response);
         Test.stopTest();
     }
 
@@ -67,7 +72,8 @@ public with sharing class PathfinderPlaceRequestTest {
         MockTest mock = new MockTest(404);
         Test.startTest();
         Test.setMock(HttpCalloutMock.class, mock); 
-        PathfinderPlaceRequest.sendRequest(accountName);
+        String response = PathfinderPlaceRequest.sendRequest(accountName);
+        System.assertEquals(response404, response);
         Test.stopTest();
     }
 
