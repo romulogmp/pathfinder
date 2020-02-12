@@ -24,9 +24,9 @@ If no address could be retrieved the user would like to see a toast message whic
 <p align="center"><img align="center" src="./static/Pathfinder.gif"></img></p>
 
 ## Design Pattern:
-**Apex Enterprise Patterns: Domain & Selector Layers**
+Apex Enterprise Patterns: Domain & Selector Layers
 
-**Apex Enterprise Patterns: Service Layer**
+Apex Enterprise Patterns: Service Layer
 
 
 ## Libraries:
