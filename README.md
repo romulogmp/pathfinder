@@ -34,7 +34,7 @@ If no address could be retrieved the user would like to see a toast message whic
 FFLIB
 
 
-**The project consists of:**
+## The project consists of:
 
 **LWC**:
 ```
