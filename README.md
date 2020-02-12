@@ -25,9 +25,16 @@ If no address could be retrieved the user would like to see a toast message whic
 
 ## Design Pattern:
 **Apex Enterprise Patterns: Domain & Selector Layers**
+
 **Apex Enterprise Patterns: Service Layer**
 
-The project consists of:
+
+## Libraries:
+
+FFLIB
+
+
+**The project consists of:**
 
 **LWC**:
 ```
