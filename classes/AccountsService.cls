@@ -70,14 +70,11 @@ public with sharing class AccountsService {
             for(AddressComponent component :  dataResults.results){
                 for(DataAddress data : component.address_components){
                     if(data.types.contains('locality')){
-                        String city = data.long_name;
-                        mapData.put('city', city);
+                        mapData.put('city', data.long_name);
                     } else if(data.types.contains('route')){
-                        String street = data.long_name;
-                        mapData.put('street', street);
+                        mapData.put('street', data.long_name);
                     } else if(data.types.contains('country')){
-                        String country = data.long_name;
-                        mapData.put('country', country);
+                        mapData.put('country', data.long_name);
                     }
                 }
             }
