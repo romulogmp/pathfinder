@@ -2,8 +2,8 @@ import { LightningElement, wire, track } from "lwc";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import getAccountsWithEmptyAddress from "@salesforce/apex/PathfinderController.getAccountsWithEmptyAddress";
 import getLastUpdatedAccounts from "@salesforce/apex/PathfinderController.getLastUpdatedAccounts";
-import PathfinderPlaceRequest from "@salesforce/apex/PathfinderPlaceRequest.sendRequest";
-import PathfinderGeocodingRequest from "@salesforce/apex/PathfinderPlaceRequest.sendRequestGeocoding";
+import PathfinderPlaceRequest from "@salesforce/apex/PathfinderController.findAddressByAccountName";
+import PathfinderGeocodingRequest from "@salesforce/apex/PathfinderController.findFullAddress";
 import { refreshApex } from "@salesforce/apex";
 import { updateRecord } from "lightning/uiRecordApi";
 import Id from "@salesforce/schema/Account.Id";
@@ -74,9 +74,11 @@ export default class AccountListEdit extends LightningElement {
           this.clearValues();
         },
         reason => {
+          console.log("Reason-->", reason);
         }
       )
       .catch(error => {
+        console.log("Error:--->  ", error);
       });
   }
 
@@ -92,45 +94,16 @@ export default class AccountListEdit extends LightningElement {
         }
       })
       .catch(error => {
+        window.console.log("error ====> " + JSON.stringify(error));
       });
   }
 
   geocodingCallout(objData) {
     PathfinderGeocodingRequest({ address: objData })
       .then(addressData => {
-        addressData.results.forEach(data => {
-          data.address_components.forEach(innerData => {
-            let arrayIndex = innerData.types.findIndex(
-              index => index === "route"
-            );
-            if (arrayIndex !== -1) {
-              this.accountStreet = innerData.long_name;
-            }
-          });
-        });
-
-        addressData.results.forEach(data => {
-          data.address_components.forEach(innerData => {
-            let arrayIndex = innerData.types.findIndex(
-              index => index === "country"
-            );
-            if (arrayIndex !== -1) {
-              this.accountCountry = innerData.long_name;
-            }
-          });
-        });
-
-        addressData.results.forEach(data => {
-          data.address_components.forEach(innerData => {
-            let arrayIndex = innerData.types.findIndex(
-              index => index === "locality"
-            );
-            if (arrayIndex !== -1) {
-              this.accountCity = innerData.long_name;
-            }
-          });
-        });
-
+        this.accountStreet = addressData.street;
+        this.accountCountry = addressData.country;
+        this.accountCity = addressData.city;
         if (this.accountStreet && this.accountCountry && this.accountCity) {
           this.updateAccout();
         } else {
@@ -138,6 +111,7 @@ export default class AccountListEdit extends LightningElement {
         }
       })
       .catch(error => {
+        window.console.log("error ====> " + JSON.stringify(error));
       });
   }
 
@@ -158,9 +132,11 @@ export default class AccountListEdit extends LightningElement {
           this.clearValues();
         },
         reason => {
+          console.log("Reason-->", reason);
         }
       )
       .catch(error => {
+        console.log("Error:--->  ", error);
       });
   }
 
@@ -179,8 +155,8 @@ export default class AccountListEdit extends LightningElement {
     this.dispatchEvent(
       new ShowToastEvent({
         title: "Search started.",
-        duration: "2000",
-        message: "Searching Address...",
+        duration: "1000",
+        message: "Searching the Address...",
         variant: "info"
       })
     );

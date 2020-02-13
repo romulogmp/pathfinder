@@ -25,7 +25,7 @@ public with sharing class Accounts extends fflib_SObjectDomain {
         
         for(Account acc : (List<Account>)Records){
             Account oldValue = (Account)oldMapAccount.get(acc.Id);
-            String oldDescription = oldValue.Description;
+            String oldDescription = oldValue.Description == null ? '' :  oldValue.Description;
             acc.AnnualRevenue = acc.Description.getLevenshteinDistance(oldDescription);
         }
     }

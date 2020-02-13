@@ -26,17 +26,17 @@ public with sharing class AccountsSelector extends fflib_SObjectSelector {
             toSOQL());
     }
     
-    public List<Account> selectLastUpdatedAccounts(Integer recordLimit) {   
+    public List<Account> selectLastUpdatedAccounts(Integer recordLimit) {
+        
         return (List<Account>) Database.query(
             newQueryFactory().
+            setOrdering('LastModifiedDate', 
+                        fflib_QueryFactory.SortOrder.DESCENDING, 
+                        true).
             setCondition('BillingCity != null ' +
             'AND BillingStreet != null ' +
             'AND BillingCountry != null').
             setLimit(recordLimit).
             toSOQL());
-    }
-
-    public override String getOrderBy() {
-        return 'LastModifiedDate DESC';
     }
 }
