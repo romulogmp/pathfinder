@@ -23,7 +23,18 @@ If no address could be retrieved the user would like to see a toast message whic
 ```
 <p align="center"><img align="center" src="./static/Pathfinder.gif"></img></p>
 
-The project consists of:
+## Design Pattern:
+Apex Enterprise Patterns: Domain & Selector Layers
+
+Apex Enterprise Patterns: Service Layer
+
+
+## Libraries:
+
+FFLIB
+
+
+## The project consists of:
 
 **LWC**:
 ```
@@ -170,7 +181,8 @@ Geocode:
 **Apex Classes**:
 ```
 MockTestData: Mock class used to generate data for teste class.
-PathfinderController: Class used to return both lists(Account without address and updated accounts) to the frontend. 
+PathfinderController: Class used to call the Selector Layer and return both lists(Account without address and updated accounts) to the frontend.
+AccountsSelector: Uses selectAccountsWithEmptyAddress and selectLastUpdatedAccounts to dynamically query the Account Object using fflib.
 PathfinderControllerTest: controller teste class (100% coverage).
 PathfinderPlaceRequest: Class with two methods. sendRequest (receives account name as parameter) and make the request to the Google Places API. sendRequestGeocoding (receives and address as parameter) and make the request to the Geocode API.
 PathfinderPlaceRequestTest: Callout test class. Has two mock classes and test both methods from PathfinderPlaceRequest (100% coverage).
