@@ -180,10 +180,10 @@ Geocode:
 
 **Apex Classes**:
 ```
-MockTestData: Mock class used to generate data for teste class.
+MockTestData: Mock class used to generate data for test class.
 PathfinderController: Class used to call the Selector Layer and return both lists(Account without address and updated accounts) to the frontend.
+PathfinderControllerTest: controller test class (100% coverage).
 AccountsSelector: Uses selectAccountsWithEmptyAddress and selectLastUpdatedAccounts to dynamically query the Account Object using fflib.
-PathfinderControllerTest: controller teste class (100% coverage).
-PathfinderPlaceRequest: Class with two methods. sendRequest (receives account name as parameter) and make the request to the Google Places API. sendRequestGeocoding (receives and address as parameter) and make the request to the Geocode API.
-PathfinderPlaceRequestTest: Callout test class. Has two mock classes and test both methods from PathfinderPlaceRequest (100% coverage).
+AccountsService: Service layer responsible to encapsulate account business logic. Class with two methods. findAddressByAccountName (receives account name as parameter) and make the request to the Google Places API. findFullAddress (receives an address as parameter) and make the request to the Geocode API.
+AccountsServiceTest: Callout test class. Has two mock classes and test both methods from AccountsService (100% coverage).
 ```
