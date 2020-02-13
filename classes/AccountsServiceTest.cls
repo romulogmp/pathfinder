@@ -1,8 +1,8 @@
 @isTest
-public with sharing class PathfinderPlaceRequestTest {
+public with sharing class AccountsServiceTest {
 
     static final Object response200 = '({formatted_address=Mr.Treublaan 7, 1097 DP Amsterdam, Países Baixos})';
-    static final String response404;
+    static final String response404 = '';
 
     @TestSetup
     static void makeData(){
@@ -46,7 +46,7 @@ public with sharing class PathfinderPlaceRequestTest {
         MockTest mock = new MockTest(200);
         Test.startTest();
         Test.setMock(HttpCalloutMock.class, mock); 
-        String response = PathfinderPlaceRequest.sendRequest(accountName);
+        String response = AccountsService.findAddressByAccountName(accountName);
         System.assertEquals(response200, response);
         Test.stopTest();     
     }
@@ -59,7 +59,7 @@ public with sharing class PathfinderPlaceRequestTest {
         MockTest mock = new MockTest(404);
         Test.startTest();
         Test.setMock(HttpCalloutMock.class, mock); 
-        String response = PathfinderPlaceRequest.sendRequest(accountName);
+        String response = AccountsService.findAddressByAccountName(accountName);
         System.assertEquals(response404, response);
         Test.stopTest();
     }
@@ -72,7 +72,7 @@ public with sharing class PathfinderPlaceRequestTest {
         MockTest mock = new MockTest(404);
         Test.startTest();
         Test.setMock(HttpCalloutMock.class, mock); 
-        String response = PathfinderPlaceRequest.sendRequest(accountName);
+        String response = AccountsService.findAddressByAccountName(accountName);
         System.assertEquals(response404, response);
         Test.stopTest();
     }
@@ -109,7 +109,7 @@ public with sharing class PathfinderPlaceRequestTest {
         MockGeocodingTest mockGeocoding = new MockGeocodingTest(200);
         Test.startTest();
         Test.setMock(HttpCalloutMock.class, mockGeocoding); 
-        PathfinderPlaceRequest.sendRequestGeocoding(address);
+        AccountsService.findFullAddress(address);
         Test.stopTest();
     }
 
@@ -121,7 +121,7 @@ public with sharing class PathfinderPlaceRequestTest {
         MockGeocodingTest mockGeocoding = new MockGeocodingTest(400);
         Test.startTest();
         Test.setMock(HttpCalloutMock.class, mockGeocoding); 
-        PathfinderPlaceRequest.sendRequestGeocoding(address);
+        AccountsService.findFullAddress(address);
         Test.stopTest();
     }
 
@@ -133,7 +133,7 @@ public with sharing class PathfinderPlaceRequestTest {
         MockGeocodingTest mockGeocoding = new MockGeocodingTest(400);
         Test.startTest();
         Test.setMock(HttpCalloutMock.class, mockGeocoding); 
-        PathfinderPlaceRequest.sendRequestGeocoding(address);
+        AccountsService.findFullAddress(address);
         Test.stopTest();
     }
 }
