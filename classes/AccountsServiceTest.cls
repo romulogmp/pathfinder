@@ -1,7 +1,7 @@
 @isTest
 public with sharing class AccountsServiceTest {
 
-    static final Object response200 = '({formatted_address=Mr.Treublaan 7, 1097 DP Amsterdam, Países Baixos})';
+    static final Object response200 = 'Mr.Treublaan 7, 1097 DP Amsterdam, Países Baixos';
     static final String response404 = '';
 
     @TestSetup

@@ -1,8 +1,7 @@
 public with sharing class AccountsService {
 
     public static String findAddressByAccountName(String accountName) {
-
-        map<String, Object> mapJsonData = new map<String, Object>();
+        Candidates candidatesResult;
         String strResponse = '';
         Http http = new Http();
         HttpRequest request = new HttpRequest();
@@ -26,8 +25,12 @@ public with sharing class AccountsService {
             } 
 
             if(!String.isBlank(strResponse)) {
-                mapJsonData = (map<String, Object>)JSON.deserializeUntyped(strResponse);
-                strResponse = String.valueOf(mapJsonData.get('candidates'));
+                candidatesResult = (Candidates)JSON.deserialize(strResponse, Candidates.class);
+
+                for(FormattedAddress candidate : candidatesResult.candidates){
+                    strResponse = candidate.formatted_address;
+                }
+                
                 return strResponse;
             } else { return ''; }
         } catch (Exception e) {
@@ -79,9 +82,7 @@ public with sharing class AccountsService {
                 }
             }
 
-            if(!mapData.isEmpty()) { return mapData; }
-
-            else { return mapData; }
+            return mapData;
 
         } catch(Exception e) {
             System.debug('Error during Geocode API Callout: ' + e);
@@ -102,5 +103,13 @@ public with sharing class AccountsService {
     public class Results{
         List<AddressComponent> results;
 
+    }
+
+    public class FormattedAddress{
+        String formatted_address;
+    }
+
+    public class Candidates{
+        List<FormattedAddress> candidates;
     }
 }
