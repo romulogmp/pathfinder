@@ -26,7 +26,19 @@ If no address could be retrieved the user would like to see a toast message whic
 ## Design Pattern:
 Apex Enterprise Patterns: Domain & Selector Layers
 
+Selector Layer:
+
+>"A layer of Mappers (473) that moves data between objects and a database while keeping them independent of each other and the mapper >itself." Martin Fowler, EAA Patterns
+
+<p align="center"><img align="center" src="./static/SelectorLayer.png"></img></p>
+
 Apex Enterprise Patterns: Service Layer
+
+Service Layer:
+
+>"Defines an application's boundary with a layer of services that establishes a set of available operations and coordinates the >application's response in each operation." Martin Fowler / Randy Stafford, EAA Patterns
+
+<p align="center"><img align="center" src="./static/ServiceLater.png"></img></p>
 
 
 ## Libraries:
