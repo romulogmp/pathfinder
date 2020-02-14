@@ -184,6 +184,7 @@ MockTestData: Mock class used to generate data for test class.
 PathfinderController: Class used to call the Selector Layer and return both lists(Account without address and updated accounts) to the frontend.
 PathfinderControllerTest: controller test class (100% coverage).
 AccountsSelector: Uses selectAccountsWithEmptyAddress and selectLastUpdatedAccounts to dynamically query the Account Object using fflib.
+AccountsSelectorTest: Selector layer test class.
 AccountsService: Service layer responsible to encapsulate account business logic. Class with two methods. findAddressByAccountName (receives account name as parameter) and make the request to the Google Places API. findFullAddress (receives an address as parameter) and make the request to the Geocode API.
 AccountsServiceTest: Callout test class. Has two mock classes and test both methods from AccountsService (100% coverage).
 ```
