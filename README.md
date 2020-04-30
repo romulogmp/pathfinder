@@ -7,7 +7,7 @@
 </p>
 
 ## About
-Pathfinder is a Salesforce APP created for the New10 challenge.
+Pathfinder is a Salesforce APP.
 
 As requested:
 ```
